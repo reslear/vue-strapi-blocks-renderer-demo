@@ -66,22 +66,18 @@ async function paste() {
 <template>
   <UContainer class="mt-4">
     <div class="flex items-center justify-center my-4">
-      <div class="flex items-center gap-2">
-        <UIcon class="text-3xl" dynamic name="i-logos-strapi-icon"></UIcon>
-        <NuxtLink
-          to="https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/"
-          class="underline text-primary"
-          target="_blank"
-        >
-          <h1 class="text-3xl font-bold">
-            Vue Strapi Blocks Renderer
-            <UIcon
-              class="text-3xl"
-              dynamic
-              name="i-heroicons-arrow-up-right-20-solid"
-            ></UIcon>
-          </h1>
-        </NuxtLink>
+      <div class="flex items-center gap-4">
+        <span class="text-primary text-3xl font-bold">Demo</span>
+        <div class="text-primary text-3xl font-bold flex items-center gap-2">
+          <UIcon class="text-3xl" dynamic name="i-logos-strapi-icon"></UIcon>
+          <NuxtLink
+            to="https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/"
+            class="underline"
+            target="_blank"
+          >
+            <span>Vue Strapi Blocks Renderer</span>
+          </NuxtLink>
+        </div>
       </div>
     </div>
 
