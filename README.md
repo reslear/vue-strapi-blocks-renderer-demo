@@ -1,0 +1,1 @@
+# vue-strapi-blocks-renderer-demo
