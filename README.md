@@ -1,75 +1,18 @@
-# Nuxt UI Minimal Starter
+# Vue Strapi Blocks Renderer Demo
 
-Look at [Nuxt docs](https://nuxt.com/docs/getting-started/introduction) and [Nuxt UI docs](https://ui.nuxt.com) to learn more.
+**Description:**
+Vue Strapi Blocks Renderer Demo is a straightforward Vue.js application showcasing the integration of the Vue Strapi Blocks Renderer library. With a clean interface, users can input Strapi right text (blocks) content in JSON format, explore the rendered output, and copy the HTML code with ease. The demo ensures a smooth experience with error handling and provides convenient links to the library's GitHub repository and the demo's source code.
 
-## Setup
+**Features:**
+- Input Strapi right text (blocks) content in JSON format.
+- Tabbed interface for viewing "Output" and "HTML" representations.
+- Copy HTML content to the clipboard effortlessly.
+- Error handling for JSON parsing issues.
+- GitHub links for the Vue Strapi Blocks Renderer library and demo source code.
 
-Make sure to install the dependencies:
+**Credits:**
+- Developed by [@reslear](https://github.com/reslear).
+- Vue Strapi Blocks Renderer Library: [GitHub Repository](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/)
+- Demo Source Code: [GitHub Repository](https://github.com/reslear/vue-strapi-blocks-renderer-demo)
 
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Explore the simplicity and functionality of Vue Strapi Blocks Renderer with this demo, making content rendering with Strapi more accessible and user-friendly.

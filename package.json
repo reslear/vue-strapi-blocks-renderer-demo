@@ -1,7 +1,11 @@
 {
-  "name": "nuxt-app",
+  "name": "vue-strapi-blocks-renderer-demo",
   "private": true,
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/reslear/vue-strapi-blocks-renderer-demo.git"
+  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
