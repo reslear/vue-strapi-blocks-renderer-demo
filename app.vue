@@ -1,14 +1,20 @@
 <script setup lang="ts">
 import { StrapiBlocks } from 'vue-strapi-blocks-renderer'
-import data from '~/assets/data.json'
 import { html_beautify } from 'js-beautify'
-
 const route = useRoute()
 const router = useRouter()
 
-const input = ref(JSON.stringify(data, null, 2))
+const inputRef = ref()
+const input = ref('')
+
+onMounted(() => {
+  import('~/assets/data.json').then(data => {
+    input.value = JSON.stringify(data.default, null, 2)
+  })
+})
 
 const content = computed(() => {
+  if (!input.value) return null
   try {
     return JSON.parse(input.value)
   } catch (e) {
@@ -45,22 +51,32 @@ const selectedTab = computed({
 const outputRef = ref()
 const outputHtml = ref('')
 
-function setOutputHtml() {
+async function setOutputHtml() {
   const html: string = outputRef.value?.innerHTML ?? ''
   if (!html) return
   outputHtml.value = html_beautify(html)
 }
 
-watchEffect(() => {
-  if (content.value) setOutputHtml()
+watchEffect(async () => {
+  if (content.value) await setOutputHtml()
 })
 
-const { copy } = useClipboard()
+const { copy, copied } = useClipboard()
 
 async function paste() {
   const text = await navigator.clipboard.readText()
   input.value = text
 }
+
+const colorMode = useColorMode()
+const isDark = computed({
+  get() {
+    return colorMode.value === 'dark'
+  },
+  set() {
+    colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
+  }
+})
 </script>
 
 <template>
@@ -88,17 +104,17 @@ async function paste() {
           <UButton
             label="Paste"
             icon="i-heroicons-clipboard"
-            color="gray"
-            variant="ghost"
+            color="primary"
+            variant="soft"
             class="absolute top-2 right-2 z-10"
             @click="paste()"
           />
-          <UTextarea v-model="input" :rows="10" resize />
+          <UTextarea ref="inputRef" v-model="input" :rows="10" resize />
         </div>
       </div>
 
       <UAlert
-        v-if="isParsingError"
+        v-if="isParsingError && input.length"
         color="red"
         variant="soft"
         description="Error parsing JSON"
@@ -129,25 +145,40 @@ async function paste() {
             <UButton
               class="absolute top-2 right-2 z-10"
               label="Copy"
-              icon="i-heroicons-clipboard-document"
-              color="gray"
-              variant="ghost"
+              :icon="
+                copied
+                  ? 'i-heroicons-check-16-solid'
+                  : 'i-heroicons-clipboard-document'
+              "
+              color="primary"
+              variant="soft"
               @click="copy(outputHtml)"
-            />
+            >
+            </UButton>
             <UTextarea :value="outputHtml" :rows="20" readonly resize />
           </div>
         </template>
       </UTabs>
 
       <UDivider />
-      <div class="text-center my-4 flex justify-center gap-2">
+      <div class="my-4 flex items-center justify-center gap-6">
+        <UButton
+          :icon="
+            isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'
+          "
+          color="gray"
+          variant="ghost"
+          aria-label="Theme"
+          @click="isDark = !isDark"
+        />
+
         <span>
           by
           <NuxtLink class="text-primary" href="https://github.com/reslear"
             >@reslear</NuxtLink
           >
         </span>
-        |
+
         <NuxtLink
           class="text-primary flex items-center gap-1"
           href="https://github.com/reslear/vue-strapi-blocks-renderer-demo"
