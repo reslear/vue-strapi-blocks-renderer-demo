@@ -16,12 +16,14 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxt/ui": "^2.13.0",
+    "@types/js-beautify": "^1.14.3",
     "@types/pretty": "^2.0.3",
     "nuxt": "^3.10.0",
     "prettier": "^3.2.4"
   },
   "dependencies": {
     "@vueuse/nuxt": "^10.7.2",
+    "js-beautify": "^1.14.11",
     "pretty": "^2.0.0",
     "vue-strapi-blocks-renderer": "^0.1.2"
   }

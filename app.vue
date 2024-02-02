@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { StrapiBlocks } from 'vue-strapi-blocks-renderer'
 import data from '~/assets/data.json'
-import pretty from 'pretty'
+import { html_beautify } from 'js-beautify'
 
 const route = useRoute()
 const router = useRouter()
@@ -48,7 +48,7 @@ const outputHtml = ref('')
 function setOutputHtml() {
   const html: string = outputRef.value?.innerHTML ?? ''
   if (!html) return
-  outputHtml.value = pretty(html)
+  outputHtml.value = html_beautify(html)
 }
 
 watchEffect(() => {
@@ -66,18 +66,16 @@ async function paste() {
 <template>
   <UContainer class="mt-4">
     <div class="flex items-center justify-center my-4">
-      <div class="flex items-center gap-4">
-        <span class="text-primary text-3xl font-bold">Demo</span>
-        <div class="text-primary text-3xl font-bold flex items-center gap-2">
-          <UIcon class="text-3xl" dynamic name="i-logos-strapi-icon"></UIcon>
-          <NuxtLink
-            to="https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/"
-            class="underline"
-            target="_blank"
-          >
-            <span>Vue Strapi Blocks Renderer</span>
-          </NuxtLink>
-        </div>
+      <div class="text-primary text-3xl font-bold">
+        <span class="pr-2">Demo</span>
+        <NuxtLink
+          to="https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/"
+          class="underline"
+          target="_blank"
+        >
+          <UIcon class="text-3xl mr-2" dynamic name="i-logos-strapi-icon" />Vue
+          Strapi Blocks Renderer
+        </NuxtLink>
       </div>
     </div>
 
@@ -104,6 +102,7 @@ async function paste() {
         color="red"
         variant="soft"
         description="Error parsing JSON"
+        title=""
       />
 
       <UTabs v-model="selectedTab" :items="tabs" v-if="!isParsingError">
@@ -119,7 +118,10 @@ async function paste() {
         </template>
 
         <template #item="{ item }">
-          <article v-show="item.key === 'output'" class="prose">
+          <article
+            v-show="item.key === 'output'"
+            class="prose dark:prose-invert"
+          >
             <StrapiBlocks v-if="content" ref="outputRef" :content="content" />
           </article>
 
