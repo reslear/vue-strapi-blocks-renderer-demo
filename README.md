@@ -1,6 +1,6 @@
 # Vue Strapi Blocks Renderer Demo
 
-- [👀 Demo](https://reslear.github.io/vue-strapi-blocks-renderer-demo/?tab=html)
+- [👀 Demo](https://reslear.github.io/vue-strapi-blocks-renderer-demo)
 
 **Description:**
 Vue Strapi Blocks Renderer Demo is a straightforward Vue.js application showcasing the integration of the Vue Strapi Blocks Renderer library. With a clean interface, users can input Strapi right text (blocks) content in JSON format, explore the rendered output, and copy the HTML code with ease. The demo ensures a smooth experience with error handling and provides convenient links to the library's GitHub repository and the demo's source code.
